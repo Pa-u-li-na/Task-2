@@ -3,8 +3,8 @@ name: Java CI
 on: 
   push:
     branches:
-      - main # Запускается при push в ветку main
-  workflow_dispatch: # Позволяет запускать workflow вручную
+      - main
+  workflow_dispatch:
 
 jobs:
   build:
@@ -18,6 +18,6 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
       - name: Build with Maven
-        run: mvn -B package --file pom.xml # Замени на свою команду сборки
+        run: mvn -B package --file Task 2.iml
       - name: Run tests
-        run: mvn test # Замени на свою команду запуска тестов 
+        run: mvn test
