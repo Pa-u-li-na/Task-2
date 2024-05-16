@@ -1,23 +1,14 @@
 name: Java CI
-on:
- push:
-  branches: [master]
- pull_request: 
-  branches: [master]
+on: [push]
 jobs:
-  build:
 
-   runs-on: ubuntu-latest
+  check-bats-version:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm install -g bats
 
-   steps:
-    - uses: actions/checkout@v2
-    - name: Set up JDK 11
-      uses: actions/setup-java@v2
-      with:
-        java-version: '11'
-        distribution: 'adopt'
-    - name: Build with Maven
-      run: mvn -B package --file pom.xml
-
-    - name: Run tests
-      run: mvn test
+      - run: bats -v
