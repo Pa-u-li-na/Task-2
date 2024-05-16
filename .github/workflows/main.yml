@@ -16,7 +16,7 @@ jobs:
       - name: Build with Maven
         run: mvn clean install
       - name: Print test results
-        if: failure()  # This step will run only if the previous steps fail
+        if: failure()
         run: cat /home/runner/work/TP_homework_2/TP_homework_2/target/surefire-reports/*.txt
       - name: Notify Telegram on Success
         if: success()
