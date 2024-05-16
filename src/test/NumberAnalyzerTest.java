@@ -1,4 +1,8 @@
+package test;
+
 import static org.junit.Assert.*;
+
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.File;
@@ -13,34 +17,34 @@ public class NumberAnalyzerTest {
     @Test
     public void testFindMin() {
         List<Integer> numbers = Arrays.asList(5, 2, 8, 1, 9);
-        assertEquals(1, Main._min(numbers));
+        Assert.assertEquals(1, Main._min(numbers));
     }
 
     @Test
     public void testFindMax() {
         List<Integer> numbers = Arrays.asList(5, 2, 8, 1, 9);
-        assertEquals(9, Main._max(numbers));
+        Assert.assertEquals(9, Main._max(numbers));
     }
 
     @Test
     public void testSum() {
         List<Integer> numbers = Arrays.asList(5, 2, 8, 1, 9);
-        assertEquals(25, Main._sum(numbers));
+        Assert.assertEquals(25, Main._sum(numbers));
     }
 
     @Test
     public void testMultiply() {
         List<Integer> numbers = Arrays.asList(2, 3, 4);
-        assertEquals(24, Main._mult(numbers));
+        Assert.assertEquals(24, Main._mult(numbers));
     }
 
     @Test
     public void testMinMaxSumMultInt() throws IOException {
         ArrayList<Integer> numbers = new ArrayList<>(Arrays.asList(1, 4, 2, 3));
-        assertEquals(1, Main._min(numbers));
-        assertEquals(4, Main._max(numbers));
-        assertEquals(10, Main._sum(numbers));
-        assertEquals(24, Main._mult(numbers));
+        Assert.assertEquals(1, Main._min(numbers));
+        Assert.assertEquals(4, Main._max(numbers));
+        Assert.assertEquals(10, Main._sum(numbers));
+        Assert.assertEquals(24, Main._mult(numbers));
     }
 
     @Test
@@ -98,10 +102,10 @@ public class NumberAnalyzerTest {
     @Test
     public void testNegativeNumbers() throws IOException {
         ArrayList<Integer> numbers = new ArrayList<>(Arrays.asList(1, -9, 3, 5, -1));
-        assertEquals(-9, Main._min(numbers));
-        assertEquals(5, Main._max(numbers));
-        assertEquals(-1, Main._sum(numbers));
-        assertEquals(135, Main._mult(numbers));
+        Assert.assertEquals(-9, Main._min(numbers));
+        Assert.assertEquals(5, Main._max(numbers));
+        Assert.assertEquals(-1, Main._sum(numbers));
+        Assert.assertEquals(135, Main._mult(numbers));
     }
 
     @Test
