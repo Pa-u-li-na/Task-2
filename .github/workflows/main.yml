@@ -28,11 +28,11 @@ jobs:
         with:
           to: ${{ secrets.TELEGRAM_CHAT_ID }}
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          message: "✅ Тесты успешно пройдены! - ${{ github.repository }} @ ${{ github.ref }}"
+          message: "✅ Тесты успешно пройдены!"
       - name: Send Telegram notification on failure
         if: failure()
         uses: appleboy/telegram-action@master
         with:
           to: ${{ secrets.TELEGRAM_CHAT_ID }}
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          message: "❌ Тесты не пройдены! - ${{ github.repository }} @ ${{ github.ref }}"
+          message: "❌ Тесты не пройдены!"
