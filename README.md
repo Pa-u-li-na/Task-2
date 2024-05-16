@@ -1,3 +1,6 @@
+![example workflow](https://github.com/Pa-u-li-na/Task-2/actions/workflows/main.yml/badge.svg)
+
+
 # Основная программа
 
 Java-программа, которая считывает числа из текстового файла (readNumbersFromFile) и выполняет базовые математические операции над ними:
