@@ -66,3 +66,6 @@ plt.show()
 ## Результат программы:
 
 ![Figure_1 2](https://github.com/Pa-u-li-na/Task-2/assets/166948085/a0825b55-b272-42f3-974d-cb14c87136ec)
+
+# Ссылка на Telegram Bot
+[Telegram Bot](https://t.me/TestingJavaCIBot)
