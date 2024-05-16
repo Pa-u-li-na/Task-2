@@ -1,4 +1,4 @@
-naim: Java CI
+name: Java CI
 on:
   push:
     branches:
