@@ -4,7 +4,7 @@ on:
    push:
       branches:
         - main
-      workflow_dispatch:
+   workflow_dispatch:
 
 jobs:
   build:
@@ -22,17 +22,12 @@ jobs:
       - name: Print test results
         if: failure()
         run: cat /home/runner/work/TP_homework_2/TP_homework_2/target/surefire-reports/*.txt
-      - name: Send Telegram notification on success
-        if: success()
+      - name: Send Telegram notification
+        if: always()
         uses: appleboy/telegram-action@master
         with:
           to: ${{ secrets.TELEGRAM_CHAT_ID }}
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          message: "✅ Тесты успешно пройдены!"
-      - name: Send Telegram notification on failure
-        if: failure()
-        uses: appleboy/telegram-action@master
-        with:
-          to: ${{ secrets.TELEGRAM_CHAT_ID }}
-          token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          message: "❌ Тесты не пройдены!"
+          message: |
+            ${{ job.status == 'success' && '✅ Тесты успешно пройдены' || '❌ Некоторые тесты не пройдены' }}
+            ${{ job.status != 'success' && '\n
