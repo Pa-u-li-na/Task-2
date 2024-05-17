@@ -19,9 +19,13 @@ jobs:
           distribution: 'temurin'
       - name: Build with Maven
         run: mvn -B package --file pom.xml
-      - name: Print test results
-        if: failure()
-        run: cat /home/runner/work/TP_homework_2/TP_homework_2/target/surefire-reports/*.txt
+      - name: Run tests
+        run: mvn -B test --file pom.xml -Dtest=*,*Test -DfailIfNoTests=false surefire-report:report -DreportFormat=txt
+      - name: Check for failed tests
+        if: ${{ failure() }}
+        run: |
+                FAILED_TESTS=$(mvn -B test --file pom.xml -Dtest=*,*Test -DfailIfNoTests=false surefire-report:report -DreportFormat=txt | grep 'Tests run:' | awk '{print $3}')
+                echo "FAILED_TESTS=${FAILED_TESTS}" >> $GITHUB_ENV
       - name: Send Telegram notification
         if: always()
         uses: appleboy/telegram-action@master
@@ -30,4 +34,4 @@ jobs:
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           message: |
             ${{ job.status == 'success' && '✅ Тесты успешно пройдены' || '❌ Некоторые тесты не пройдены' }}
-            ${{ job.status != 'success' && '\n + steps.test.outputs.failures + '\n || '' }}
+            ${{ failure() &&  'Список неудачных тестов:\n' + env.FAILED_TESTS || '' }}
