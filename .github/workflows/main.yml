@@ -30,4 +30,4 @@ jobs:
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           message: |
             ${{ job.status == 'success' && '✅ Тесты успешно пройдены' || '❌ Некоторые тесты не пройдены' }}
-            ${{ job.status != 'success' && '\n
+            ${{ job.status != 'success' && '\n + steps.test.outputs.failures + '\n || '' }}
